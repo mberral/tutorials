@@ -1,8 +1,7 @@
 package com.baeldung.services;
 
-import org.springframework.stereotype.Service;
-
 import com.baeldung.model.User;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {

@@ -7,11 +7,7 @@ import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
@@ -29,10 +25,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         registry.addViewController("/")
-            .setViewName("index");
+                .setViewName("index");
     }
 
-    /** Multipart file uploading configuratioin */
+    /**
+     * Multipart file uploading configuratioin
+     */
     @Bean
     public CommonsMultipartResolver multipartResolver() throws IOException {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
@@ -50,17 +48,21 @@ public class WebConfig implements WebMvcConfigurer {
         return bean;
     }
 
-    /** Static resource locations including themes*/
+    /**
+     * Static resource locations including themes
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
-            .addResourceLocations("/", "/resources/")
-            .setCachePeriod(3600)
-            .resourceChain(true)
-            .addResolver(new PathResourceResolver());
+                .addResourceLocations("/", "/resources/")
+                .setCachePeriod(3600)
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());
     }
 
-    /** BEGIN theme configuration */
+    /**
+     * BEGIN theme configuration
+     */
     @Bean
     public ResourceBundleThemeSource themeSource() {
         ResourceBundleThemeSource themeSource = new ResourceBundleThemeSource();
@@ -89,10 +91,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(themeChangeInterceptor());
     }
 
-    /** END theme configuration */
+    /**
+     * END theme configuration
+     */
 
     @Bean
-    public BeanNameViewResolver beanNameViewResolver(){
+    public BeanNameViewResolver beanNameViewResolver() {
         BeanNameViewResolver beanNameViewResolver = new BeanNameViewResolver();
         beanNameViewResolver.setOrder(1);
         return beanNameViewResolver;
@@ -109,7 +113,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public View sample3(){
+    public View sample3() {
         return new JstlView("/WEB-INF/view3/sample3.jsp");
     }
 
@@ -119,11 +123,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
         configurer.favorParameter(true)
-            .parameterName("mediaType")
-            .ignoreAcceptHeader(false)
-            .useRegisteredExtensionsOnly(false)
-            .defaultContentType(MediaType.APPLICATION_JSON)
-            .mediaType("xml", MediaType.APPLICATION_XML)
-            .mediaType("json", MediaType.APPLICATION_JSON);
+                .parameterName("mediaType")
+                .ignoreAcceptHeader(false)
+                .useRegisteredExtensionsOnly(false)
+                .defaultContentType(MediaType.APPLICATION_JSON)
+                .mediaType("xml", MediaType.APPLICATION_XML)
+                .mediaType("json", MediaType.APPLICATION_JSON);
     }
 }

@@ -1,12 +1,14 @@
 ## Spring MVC Basics
 
 This module contains articles about the basics of Spring MVC. Articles about more specific areas of Spring MVC have
-their own module. 
+their own module.
 
 ### The Course
+
 The "REST With Spring" Classes: https://bit.ly/restwithspring
 
-### Relevant Articles: 
+### Relevant Articles:
+
 - [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
 - [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
 - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)

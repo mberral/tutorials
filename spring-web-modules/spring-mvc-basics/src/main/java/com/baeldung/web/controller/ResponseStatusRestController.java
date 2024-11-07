@@ -1,14 +1,13 @@
 package com.baeldung.web.controller;
 
-import java.util.concurrent.ThreadLocalRandom;
-
+import com.baeldung.model.Book;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.model.Book;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 public class ResponseStatusRestController {
@@ -32,16 +31,16 @@ public class ResponseStatusRestController {
     public Book createEntity() {
         // here we would create and persist an entity
         int randomInt = ThreadLocalRandom.current()
-            .nextInt(1, 100);
+                .nextInt(1, 100);
         Book entity = new Book(randomInt, "author" + randomInt, "title" + randomInt);
         return entity;
     }
-    
+
     @PostMapping("create-no-responsestatus")
     public Book createEntityWithoutResponseStatus() {
         // here we would create and persist an entity
         int randomInt = ThreadLocalRandom.current()
-            .nextInt(1, 100);
+                .nextInt(1, 100);
         Book entity = new Book(randomInt, "author" + randomInt, "title" + randomInt);
         return entity;
     }

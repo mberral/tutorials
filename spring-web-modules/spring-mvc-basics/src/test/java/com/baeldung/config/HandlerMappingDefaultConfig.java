@@ -1,10 +1,9 @@
 package com.baeldung.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.baeldung.web.controller.handlermapping.BeanNameHandlerMappingController;
 import com.baeldung.web.controller.handlermapping.WelcomeController;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
